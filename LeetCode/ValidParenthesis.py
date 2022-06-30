@@ -1,18 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         list_s = list(s)
-        opening = ['(','{','[']
-        closing = [')','}',']']
         matching_pair = {'(':')','{':'}','[':']'}
         priority = []
         valid = False
         if len(list_s)%2!=0:
             return valid
         for br in list_s:
-            if br in opening:
+            if br in matching_pair.keys():
                 priority.append(br)
                 valid=False
-            elif br in closing and priority:
+            elif priority:
                 if matching_pair[priority[len(priority)-1]] == br:
                     priority.pop()
                     if not priority:
@@ -20,8 +18,7 @@ class Solution:
                 else:
                     valid=False
                     break
-            elif br in closing and not priority:
+            else:
                 valid=False
                 break
         return valid
-            
