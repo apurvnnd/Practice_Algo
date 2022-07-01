@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         nums_count = Counter(nums)
